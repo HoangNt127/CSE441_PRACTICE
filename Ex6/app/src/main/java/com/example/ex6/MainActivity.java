@@ -68,5 +68,39 @@ public class MainActivity extends AppCompatActivity {
         if (chkdocsach.isChecked()) sothich += chkdocsach.getText() + "\n";
         if (chkdoccode.isChecked()) sothich += chkdoccode.getText() + "\n";
         String bosung = editBosung.getText() + "";
+        //Tạo Dialpg
+        AlertDialog.Builder builder=new AlertDialog.Builder(this); builder.setTitle("Thông tin cá nhân"); builder.setPositiveButton("Đóng", new
+                DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        String msg=ten+"\n"; msg+= cmnd+"\n"; msg+=bang+"\n"; msg+=sothich; msg+="—————————–\n";
+        msg+="Thông tin bổ sung:\n"; msg+=bosung+ "\n"; msg+="—————————–";
+        builder.setMessage(msg);//thiết lập nội dung
+        builder.create().show();//hiển thị Dialog
+    }
+
+    @Override
+    public void onBackPressed() { AlertDialog.Builder b =new
+            AlertDialog.Builder(MainActivity.this); b.setTitle("Question");
+        b.setMessage("Are you sure you want to exit?"); b.setIcon(R.drawable.inform); b.setPositiveButton("Yes", new DialogInterface.
+                OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                finish();
+            }});
+        b.setNegativeButton("No", new
+                DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+
+                    {
+                        dialog.cancel();
+                    }
+                });
+        b.create().show();
     }
 }
